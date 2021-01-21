@@ -18,10 +18,16 @@ export class ListViewComponent implements OnInit {
   }
 
   onRowsPopulated(): void {
+    let names = new Set();
+
     for (let row of this.rows) {
-      this.structures = this.structures.concat(row.anatomical_structures);
+      for (let struct of row.anatomical_structures) {
+        if (!names.has(struct.name)) {
+          this.structures.push(struct);
+          names.add(struct.name);
+        }
+      }
     }
-    // TODO Return a unique list based on structure name
   }
 
   getRows(): void {
