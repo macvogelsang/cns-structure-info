@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Structure, Row, ResponseData} from '../Types'
+import {Structure, Row, ResponseData, Term} from '../Types'
 import {StructuresService} from '../structures.service'
 
 @Component({
@@ -38,4 +38,28 @@ export class ListViewComponent implements OnInit {
         complete: () => this.onRowsPopulated()
       });
   }
+
+  getTerm(oboId: string): void {
+    let transformedId = oboId.replace(":","_");
+    this.structuresService.getOntologyInfo(transformedId).subscribe({
+      next: res => this.selectedTerm = res["_embedded"]["terms"][0],
+      complete: () => console.log(this.selectedTerm)
+    })
+  }
+
+  selectedStructure: Structure;
+  selectedTerm: Term;
+
+  onClick(struct: Structure): void {
+    this.selectedStructure = struct;
+    if (struct.id) {
+      this.getTerm(struct.id);
+    } else {
+      this.selectedTerm =  {
+        label: "Not found",
+        description: "No ontology id present for this structure."
+      }
+    }
+  }
+
 }

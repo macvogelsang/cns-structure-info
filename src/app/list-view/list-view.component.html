@@ -1,6 +1,7 @@
+<app-details [term]="selectedTerm"></app-details>
 <ul class="structures">
-    <li *ngFor="let structure of structures">
-        <h3 class="">{{structure.name}}</h3> 
+    <li *ngFor="let structure of structures" (click)="onClick(structure)" [class.selected]="structure === selectedStructure">
+        <h3 class="">{{structure.name | titlecase}}</h3> 
         <span>{{structure.id}}</span>
     </li>
 </ul>

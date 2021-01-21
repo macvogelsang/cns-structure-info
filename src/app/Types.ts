@@ -21,3 +21,10 @@ export interface ResponseData {
     csv?: string;
     parsed?: string;
 }
+
+export interface Term {
+  label?: string;
+  iri?: string;
+  obo_id?: string;
+  description?: string;
+}
