@@ -11,6 +11,7 @@ export class ListViewComponent implements OnInit {
 
   structures: Structure[] = [];
   rows: Row[];
+
   constructor(private structuresService: StructuresService) { }
 
   ngOnInit(): void {
@@ -22,6 +23,9 @@ export class ListViewComponent implements OnInit {
 
     for (let row of this.rows) {
       for (let struct of row.anatomical_structures) {
+        if (!struct.id || struct.id.includes("not found")) {
+          struct.id = "";
+        }
         if (!names.has(struct.name)) {
           this.structures.push(struct);
           names.add(struct.name);

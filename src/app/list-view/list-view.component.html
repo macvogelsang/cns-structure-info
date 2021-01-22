@@ -1,10 +1,10 @@
 <!-- <app-details [term]="selectedTerm"></app-details> -->
 <router-outlet></router-outlet>
-<div class="row row-cols-3">
+<div class="row row-cols-lg-3">
     <div class="col" *ngFor="let structure of structures" (click)="onClick(structure)" >
         <div class="structure-block" [class.selected]="structure === selectedStructure" routerLink="/structure/{{structure.id | urlEncodeId}}">
             <h3>{{structure.name | titlecase}}</h3> 
-            <div class="id">{{structure.id}}</div>
+            <div class="id">{{structure.id | formatId}}</div>
         </div>
     </div>
 </div>
