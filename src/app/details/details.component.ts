@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Term } from '../Types';
-import { ActivatedRoute, Router, Event, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StructuresService } from '../structures.service';
 
 @Component({
@@ -18,10 +19,8 @@ export class DetailsComponent implements OnInit {
   @Input() id: string;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private structuresService: StructuresService,
-    private location: Location
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -42,4 +41,7 @@ export class DetailsComponent implements OnInit {
     })
   }
 
+  exitModal(): void {
+    this.modalService.dismissAll();
+  }
 }

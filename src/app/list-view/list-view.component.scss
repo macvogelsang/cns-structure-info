@@ -1,7 +1,4 @@
-$background: rgb(236, 236, 236);
-$backgroundHover: rgb(143, 221, 184);
-$backgroundSelected: rgb(37, 172, 109);
-$primary: rgb(37, 172, 109);
+@import '../../variables';
 
 div.col {
     cursor: pointer;
@@ -19,11 +16,6 @@ div.col {
     .structure-block:focus {
         background:$backgroundHover;
     }
-
-    // .structure-block.selected {
-    //     background:$backgroundSelected;
-    //     color:white;
-    // }
 
     .id {
         height:40px;

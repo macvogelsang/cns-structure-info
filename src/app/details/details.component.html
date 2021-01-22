@@ -1,6 +1,11 @@
-<div *ngIf="term">
-    <p>{{term.label | titlecase}}</p>
+<div class="main">
+    <h3>{{term.label | titlecase}}</h3>
+    <p class="id">{{term.obo_id}}</p>
     <p>{{term.description}}</p>
-    <p>{{term.obo_id}}</p>
-    <p>{{term.iri}}</p>
+    <p><a href="{{term.iri}}" target="_blank">{{term.iri}}</a></p>
+</div>
+<div class="exit">
+    <button (click)="exitModal()" type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>

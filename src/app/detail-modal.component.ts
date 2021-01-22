@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,19 +23,23 @@ export class DetailModalComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.params.pipe(takeUntil(this.destroy)).subscribe(params => {
 
-        this.currentDialog = this.modalService.open(DetailsComponent, {centered: true});
+        this.currentDialog = this.modalService.open(DetailsComponent, {centered: false, size: "lg"});
         this.currentDialog.componentInstance.id = params.id;
 
         // Go back to the main structure list after modal is closed 
         this.currentDialog.result.then(result => {
-            this.router.navigateByUrl('/');
+          this.navigateToRoot()
         }, reason => {
-            this.router.navigateByUrl('/');
+          this.navigateToRoot()
         });
     });
   }
+  
+  navigateToRoot(): void {
+    this.router.navigateByUrl('/');
+  }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // stop the subscriber
     this.destroy.next();
   }
