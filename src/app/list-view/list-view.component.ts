@@ -20,7 +20,7 @@ export class ListViewComponent implements OnInit {
 
   onRowsPopulated(): void {
     let names = new Set();
-
+    // Iterate through avaiable rows and find unique structures by name
     for (let row of this.rows) {
       for (let struct of row.anatomical_structures) {
         if (!struct.id || struct.id.includes("not found")) {
@@ -32,6 +32,8 @@ export class ListViewComponent implements OnInit {
         }
       }
     }
+    // Sort remaining structures alphabetically
+    this.structures.sort((a: Structure, b:Structure) => a.name.localeCompare(b.name));
   }
 
   getRows(): void {

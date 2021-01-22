@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Term } from '../Types';
-import { ActivatedRoute, Router} from '@angular/router';
-import { Location } from '@angular/common';
-
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StructuresService } from '../structures.service';
 
@@ -21,7 +18,13 @@ export class DetailsComponent implements OnInit {
   constructor(
     private structuresService: StructuresService,
     private modalService: NgbModal
-  ) {}
+  ) {
+    // Default modal information
+    this.term =  {
+      label: "",
+      description: ""
+    }
+  }
 
   ngOnInit(): void {
     this.getTerm();
@@ -29,10 +32,8 @@ export class DetailsComponent implements OnInit {
 
   getTerm(): void {
     if (!this.id) {
-      this.term =  {
-        label: "Not found",
-        description: "No ontology id present for this structure."
-      }
+      this.term.label = "Not found.";
+      this.term.description = "No UBERON id present for this structure.";
       return;
     }
     this.structuresService.getOntologyInfo(this.id).subscribe({

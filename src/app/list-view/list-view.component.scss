@@ -12,13 +12,20 @@ div.col {
         transition:300ms;
     }
 
-    .structure-block:hover,
-    .structure-block:focus {
+    .structure-block:hover {
         background:$backgroundHover;
+    }
+
+    .structure-block:focus {
+        outline: 0;
     }
 
     .id {
         height:40px;
         color:#777;
     }
+}
+
+div.row {
+    min-height: 1vh;
 }
