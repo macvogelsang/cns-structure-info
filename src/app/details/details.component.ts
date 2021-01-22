@@ -12,7 +12,10 @@ import { StructuresService } from '../structures.service';
 })
 export class DetailsComponent implements OnInit {
 
-  @Input() term: Term;
+  // Term to display in the modal
+  term: Term;
+  // Input id from the route path
+  @Input() id: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,23 +26,17 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTerm();
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationEnd) {
-        this.getTerm();
-      }
-    })
   }
 
   getTerm(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (!id) {
+    if (!this.id) {
       this.term =  {
         label: "Not found",
         description: "No ontology id present for this structure."
       }
       return;
     }
-    this.structuresService.getOntologyInfo(id).subscribe({
+    this.structuresService.getOntologyInfo(this.id).subscribe({
       next: res => this.term = res["_embedded"]["terms"][0],
       complete: () => console.log(this.term)
     })
