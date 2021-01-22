@@ -1,8 +1,11 @@
 
 # StructureInfo
-Displays a list of anatomical structures. Click on one to bring up its description and ontology search link.
+This app displays a list of anatomical structures. Click on one to bring up its description and ontology search link.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
+
+## Live demo
+[Github pages link](https://macvogelsang.github.io/cns-structure-info/)
 
 ## Start the app locally
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
