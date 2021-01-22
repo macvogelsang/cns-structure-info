@@ -1,10 +1,10 @@
 <!-- <app-details [term]="selectedTerm"></app-details> -->
 <router-outlet></router-outlet>
-<ul class="structures">
-    <li *ngFor="let structure of structures" (click)="onClick(structure)" [class.selected]="structure === selectedStructure">
-        <div routerLink="/structure/{{structure.id | urlEncodeId}}">
-            <h3 class="">{{structure.name | titlecase}}</h3> 
-            <span>{{structure.id}}</span>
+<div class="row row-cols-3">
+    <div class="col" *ngFor="let structure of structures" (click)="onClick(structure)" >
+        <div class="structure-block" [class.selected]="structure === selectedStructure" routerLink="/structure/{{structure.id | urlEncodeId}}">
+            <h3>{{structure.name | titlecase}}</h3> 
+            <div class="id">{{structure.id}}</div>
         </div>
-    </li>
-</ul>
+    </div>
+</div>

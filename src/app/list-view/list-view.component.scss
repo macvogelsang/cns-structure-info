@@ -1,10 +1,31 @@
-li {
-    cursor: pointer;
-    border: 1px solid gray;
-    margin: 5px;
-    padding: 5px;
-}
+$background: rgb(236, 236, 236);
+$backgroundHover: rgb(143, 221, 184);
+$backgroundSelected: rgb(37, 172, 109);
 
-.selected {
-    color:purple;
+div.col {
+    cursor: pointer;
+    padding: 3px;
+
+    .structure-block {
+        padding:10px 15px;
+        margin: 5px;
+        background: $background;
+        border-radius: 10px;
+        transition:300ms;
+    }
+
+    .structure-block:hover,
+    .structure-block:focus {
+        background:$backgroundHover;
+    }
+
+    // .structure-block.selected {
+    //     background:$backgroundSelected;
+    //     color:white;
+    // }
+
+    .id {
+        height:40px;
+        color:#777;
+    }
 }
