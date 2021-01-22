@@ -1,7 +1,10 @@
-<app-details [term]="selectedTerm"></app-details>
+<!-- <app-details [term]="selectedTerm"></app-details> -->
+<router-outlet></router-outlet>
 <ul class="structures">
     <li *ngFor="let structure of structures" (click)="onClick(structure)" [class.selected]="structure === selectedStructure">
-        <h3 class="">{{structure.name | titlecase}}</h3> 
-        <span>{{structure.id}}</span>
+        <div routerLink="/structure/{{structure.id | urlEncodeId}}">
+            <h3 class="">{{structure.name | titlecase}}</h3> 
+            <span>{{structure.id}}</span>
+        </div>
     </li>
 </ul>

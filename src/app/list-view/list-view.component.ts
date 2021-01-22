@@ -39,27 +39,10 @@ export class ListViewComponent implements OnInit {
       });
   }
 
-  getTerm(oboId: string): void {
-    let transformedId = oboId.replace(":","_");
-    this.structuresService.getOntologyInfo(transformedId).subscribe({
-      next: res => this.selectedTerm = res["_embedded"]["terms"][0],
-      complete: () => console.log(this.selectedTerm)
-    })
-  }
-
   selectedStructure: Structure;
-  selectedTerm: Term;
 
   onClick(struct: Structure): void {
     this.selectedStructure = struct;
-    if (struct.id) {
-      this.getTerm(struct.id);
-    } else {
-      this.selectedTerm =  {
-        label: "Not found",
-        description: "No ontology id present for this structure."
-      }
-    }
   }
 
 }
